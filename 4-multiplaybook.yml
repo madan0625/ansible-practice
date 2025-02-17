@@ -1,0 +1,21 @@
+- name: writing playbook1
+  hosts: web
+  tasks:
+    - name: playbook-01 task-01
+      ansible.builtin.debug:
+        msg: "play-1 task-1"
+
+    - name: playbook-01 task-01
+      ansible.builtin.debug:
+        msg: "play-1 task-2"
+
+- name: writing playbook2
+  hosts: web
+  tasks:
+    - name: playbook-02 task-01
+      ansible.builtin.debug:
+        msg: "play-2 task-1"
+
+    - name: playbook-02 task-02
+      anisble.builtin.debug:
+        msg: "play-2 task-2"
