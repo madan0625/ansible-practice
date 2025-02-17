@@ -1,0 +1,13 @@
+- name: passing values form prompt
+  hosts: web
+  vars_prompt:
+    - name: enter details
+      prompt: enter your name
+      private: false
+
+    - name: password details
+      prompt: enter password
+  tasks:
+    - name: print the deatils
+      ansible.builtin.debug:
+      
