@@ -17,5 +17,5 @@
         msg: "play-2 task-1"
 
     - name: playbook-02 task-02
-      anisble.builtin.debug:
+      ansible.builtin.debug:
         msg: "play-2 task-2"
