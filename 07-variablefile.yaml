@@ -1,6 +1,6 @@
 - name: passing values with varfile
   hosts: web
-  var_file:
+  vars_files:
     - vars.yml
   tasks:
     - name: through varaible file
