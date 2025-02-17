@@ -1,0 +1,8 @@
+- name: passing values with varfile
+  hosts: web
+  var_file:
+    - vars.yml
+  tasks:
+    - name: through varaible file
+      ansible.builtin.debug:
+        msg: "name: {{NAME}}, father_name: {{FNAME}}, age: {{AGE}}, sex: {{SEX}}, education: {{QUALIFICATION}}"
