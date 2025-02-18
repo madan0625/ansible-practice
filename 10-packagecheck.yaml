@@ -3,7 +3,7 @@
   become: yes
   tasks:
     - name:
-      ansible.buitlin.command: apt update -y
+      ansible.builtin.command: apt update -y
     - name: check nginx
       ansible.builtin.command: apt list installed nginx
       register: varng
