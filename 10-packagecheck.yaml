@@ -22,7 +22,7 @@
 
     - name: checking running nginx
       ansible.builtin.service:
-        name: {{ pack }}
+        name: nginx
         state: started
         enabled: yes
       when: varsuc.rc == 0
