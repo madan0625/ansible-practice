@@ -6,14 +6,14 @@
       ansible.builtin.command: apt update -y
 
     - name: checking package
-      ansible.builtin.command: apt list --installed nginx
+      ansible.builtin.shell: apt list --installed nginx
       register: varng
       ignore_errors: true
 
     - name: checking nginx
       ansible.builtin.debug:                 
         msg: "nginx is not installed, going to install"
-      ansible.builtin.command: apt install nginx -y
+      ansible.builtin.shell: apt install nginx -y
       register: varsuc
       ignore_errors: yes
       when: varng.rc != 0
