@@ -1,0 +1,32 @@
+- name: check nginx installed or not if not then install
+  hosts: web
+  become: yes
+  tasks:
+    - name:
+      ansible.buitlin.command: apt update -y
+    - name: check nginx
+      ansible.builtin.command: apt list installed nginx
+      register: varng
+      ignore_errors: true
+
+    - name: install nginx
+      ansible.builtin.debug:                 
+        msg: "nginx is not installed, going to install"
+      ansible.builtin.command: apt install nginx -y
+      register: varsuc
+      ignore_errors: yes
+      when: varng.rc != 0
+
+    - name: run nginx
+      ansible.builtin.debug:
+        msg: "nginx is installed and starting the nginx"
+      ansible.builtin.service:
+        name: nginx
+        state: started
+        enabled: yes
+      when: varsuc.rc == 0
+
+    - name: installation is failed
+      ansible.builtin.debug:
+        msg: "installation is failed"
+      when: var.suc != 0
