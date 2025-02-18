@@ -14,7 +14,7 @@
       ansible.builtin.shell: apt install nginx -y
       register: varsuc
       ignore_errors: yes
-      when: varng.rc != 0
+      when: varng.rc == 0
 
     - name: checking running nginx
       ansible.builtin.service:
