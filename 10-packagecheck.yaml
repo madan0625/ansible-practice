@@ -26,4 +26,4 @@
     - name: installation is failed
       ansible.builtin.debug:
         msg: "installation is failed"
-      when: var.suc != 0
+      when: varsuc.rc != 0
