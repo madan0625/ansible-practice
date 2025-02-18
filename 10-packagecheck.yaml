@@ -3,16 +3,16 @@
   become: yes
   tasks:
     - name:
-      ansible.builtin.apt: update -y
+      ansible.builtin.command: apt update -y
     - name: check nginx
-      ansible.builtin.apt: list --installed nginx
+      ansible.builtin.command: apt list --installed nginx
       register: varng
       ignore_errors: true
 
     - name: install nginx
       ansible.builtin.debug:                 
         msg: "nginx is not installed, going to install"
-      ansible.builtin.apt: install nginx -y
+      ansible.builtin.command: apt install nginx -y
       register: varsuc
       ignore_errors: yes
       when: varng.rc != 0
