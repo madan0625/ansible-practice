@@ -1,24 +1,28 @@
 - name: check nginx installed or not if not then install
   hosts: web
+  vars_prompt:
+    name: pack
+    prompt: enter package name
+    private: false
   become: yes
   tasks:
     - name:
       ansible.builtin.command: apt update -y
 
     - name: checking package
-      ansible.builtin.shell: apt list --installed nginx
+      ansible.builtin.shell: apt list --installed {{ pack }}
       register: varng
       ignore_errors: true
 
     - name: checking nginx
-      ansible.builtin.shell: apt install nginx -y
+      ansible.builtin.shell: apt install {{ pack }} -y
       register: varsuc
       ignore_errors: yes
       when: varng.rc == 0
 
     - name: checking running nginx
       ansible.builtin.service:
-        name: nginx
+        name: {{ pack }}
         state: started
         enabled: yes
       when: varsuc.rc == 0
