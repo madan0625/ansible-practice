@@ -11,16 +11,12 @@
       ignore_errors: true
 
     - name: checking nginx
-      ansible.builtin.debug:                 
-        msg: "nginx is not installed, going to install"
       ansible.builtin.shell: apt install nginx -y
       register: varsuc
       ignore_errors: yes
       when: varng.rc != 0
 
     - name: checking running nginx
-      ansible.builtin.debug:
-        msg: "nginx is installed and starting the nginx"
       ansible.builtin.service:
         name: nginx
         state: started
