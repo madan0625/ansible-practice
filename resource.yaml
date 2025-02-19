@@ -1,0 +1,3 @@
+uptime_file: "/home/masterserver/temp/up_time.txt"
+disk_usage: "/home/masterserver/temp/disk_usage.txt"
+memory_file: "/home/masterserver/temp/memory_file.txt"
