@@ -1,6 +1,6 @@
 - name: check servers status
   hosts: local
-  conection: local
+  connection: local
   become: yes
   vars_file:
     - resource.yaml
