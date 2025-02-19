@@ -1,0 +1,12 @@
+- name: check servers status
+  hosts: local
+  conection: local
+  become: yes
+  vars_file:
+    - resource.yaml
+  tasks:
+    - name: checking servers daily status
+      ansible.builtin.command:
+        - uptime | cat >> {{ uptime_file }}
+        - df -h | cat >> {{ disk_usage }}
+        - free -h | cat >> {{ memory_file }}
