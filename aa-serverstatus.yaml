@@ -2,7 +2,7 @@
   hosts: local
   connection: local
   become: yes
-  vars_file:
+  vars_files:
     - resource.yaml
   tasks:
     - name: checking servers daily status
